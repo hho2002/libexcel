@@ -254,7 +254,7 @@ void wbook_store_window1(struct wbookctx *wbook)
 {
   struct pkt *pkt;
 
-  pkt = pkt_init(20, VARIABLE_PACKET);
+  pkt = pkt_init(22, FIXED_PACKET);
 
   /* Write header */
   pkt_add16_le(pkt, 0x003D);  /* Record identifier */

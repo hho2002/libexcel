@@ -24,6 +24,7 @@
 #include "stream.h"
 
 const int g_BIFF_version = 0x0500;
+const int g_limit = 2080;
 
 int bw_init(struct bwctx *bw);
 
@@ -111,9 +112,30 @@ void bw_resize(struct bwctx *bw, size_t size)
   }
 }
 
+void bw_continue(void *data, size_t *size)
+{
+  struct pkt *pkt;
+
+  int new_size = *size + (*size / g_limit) * 4;
+  void *new_data = malloc(new_size);
+
+  pkt = pkt_init(20, FIXED_PACKET);
+  /* Write header */
+  pkt_add16_le(pkt, 0x003C);  /* Record identifier */
+  pkt_add16_le(pkt, 0x0012);  /* Number of bytes to follow */
+
+  free(new_data);
+  pkt_free(pkt);
+}
+
 void bw_append(void *xlsctx, void *data, size_t size)
 {
   struct bwctx *bw = (struct bwctx *)xlsctx;
+
+  if (size > g_limit) {
+    //bw_continue(data, &size);
+    printf("append size %d", size);
+  }
 
   int len = bw->_sz;
   bw_resize(bw, len + size);
@@ -123,6 +145,11 @@ void bw_append(void *xlsctx, void *data, size_t size)
 
 void bw_prepend(struct bwctx *bw, void *data, size_t size)
 {
+  if (size > g_limit) {
+    //bw_continue(data, &size);
+    printf("prepend size %d", size);
+  }
+
   int len = bw->_sz;
   bw_resize(bw, len + size);
   memmove(bw->data + size, bw->data, len);
