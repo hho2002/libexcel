@@ -14,6 +14,9 @@ OBJS3 = $(SRCS3:.c=.o)
 SRCS4 = example3.c
 OBJS4 = $(SRCS4:.c=.o)
 
+SRCS5 = example4.c
+OBJS5 = $(SRCS5:.c=.o)
+
 CC = gcc
 AR = ar
 
@@ -31,8 +34,9 @@ EXE1 = example1
 EXE2 = example2
 EXE3 = merge1
 EXE4 = example3
+EXE5 = example4
 
-EXES = $(EXE1) $(EXE2) $(EXE3) $(EXE4)
+EXES = $(EXE1) $(EXE2) $(EXE3) $(EXE4) $(EXE5)
 
 all: $(EXES)
 
@@ -51,6 +55,9 @@ $(EXE3): $(OBJS3) ../src/libexcel.a
 
 $(EXE4): $(OBJS4) ../src/libexcel.a
 	$(CC) $(CFLAGS) -o $(EXE4) $(OBJS4) ../src/libexcel.a
+
+$(EXE5): $(OBJS5) ../src/libexcel.a
+	$(CC) -O2 -o $(EXE5) $(OBJS5) ../src/libexcel.a
 
 clean:
 	$(RM) *.o $(EXES)
