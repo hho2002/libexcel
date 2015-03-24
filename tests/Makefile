@@ -57,7 +57,10 @@ $(EXE4): $(OBJS4) ../src/libexcel.a
 	$(CC) $(CFLAGS) -o $(EXE4) $(OBJS4) ../src/libexcel.a
 
 $(EXE5): $(OBJS5) ../src/libexcel.a
-	$(CC) -O2 -o $(EXE5) $(OBJS5) ../src/libexcel.a
+	$(CC) $(CFLAGS) -o $(EXE5) $(OBJS5) ../src/libexcel.a
+
+tst-string: tst-tstring.o ../src/libexcel.a
+	$(CC) $(CFLAGS) -o $@ tst-tstring.o ../src/libexcel.a
 
 clean:
 	$(RM) *.o $(EXES)
