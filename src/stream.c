@@ -42,7 +42,8 @@
 
 #include "stream.h"
 
-#define MAX_SIZE	16384
+//#define MAX_SIZE	16384
+#define MAX_SIZE	65535
 
 struct pkt *
 pkt_init(size_t len, int type)
@@ -65,6 +66,12 @@ pkt_init(size_t len, int type)
 
 	return p;
 
+}
+
+void pkt_reset(struct pkt *p)
+{
+  p->len = 0;
+  p->offset = 0;
 }
 
 void pkt_addraw(struct pkt *p, const unsigned char *bytes, size_t len)

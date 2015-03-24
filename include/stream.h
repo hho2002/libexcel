@@ -68,6 +68,7 @@ void pkt_add32_le(struct pkt *p, uint32_t val);
 void pkt_write_data_len(struct pkt *p);
 void pkt_addstring(struct pkt *p, const char *bytes);
 void pkt_free(struct pkt * p);
+void pkt_reset(struct pkt * p);
 
 /* Raw routines */
 struct pkt * pkt_init(size_t len, int type);
