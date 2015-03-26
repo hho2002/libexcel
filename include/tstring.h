@@ -18,8 +18,6 @@
 #ifndef _TSTRING_H_
 #define _TSTRING_H_
 
-#define _GNU_SOURCE
-
 #include <ctype.h>
 #include <stddef.h>
 #include <stdlib.h>

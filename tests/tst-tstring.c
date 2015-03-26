@@ -49,5 +49,7 @@ int main(int argc, const char *argv[])
     tstring_free(tstr1);
     tstring_free(tstr2);
     tstring_free(tstr3);
-	tstring_free(tstr4);
+    tstring_free(tstr4);
+
+    return 0;
 }

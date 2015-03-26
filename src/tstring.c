@@ -15,6 +15,8 @@
  *
  * =============================================================================
  */
+#define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -44,13 +46,13 @@
  * Returns: %TRUE if the two keys match
  */
 
-static int 
-_tstring_equal(const void *v1, const void *v2)
-{
-    const char *str1 = v1;
-    const char *str2 = v2;
-    return strcmp(str1, str2) == 0;
-}
+//static int 
+//_tstring_equal(const void *v1, const void *v2)
+//{
+//    const char *str1 = v1;
+//    const char *str2 = v2;
+//    return strcmp(str1, str2) == 0;
+//}
 
 /*
  * _strcmp:
@@ -63,15 +65,15 @@ _tstring_equal(const void *v1, const void *v2)
  *
  * Returns: -1, 0 or 1, if @str1 is <, == or > than @str2.
  */
-static int
-_tstring_strcmp (const char *str1, const char *str2)
-{
-    if (!str1)
-        return -(str1 != str2);
-    if (!str2)
-        return str1 != str2;
-    return strcmp(str1, str2);
-}
+//static int
+//_tstring_strcmp (const char *str1, const char *str2)
+//{
+//    if (!str1)
+//        return -(str1 != str2);
+//    if (!str2)
+//        return str1 != str2;
+//    return strcmp(str1, str2);
+//}
 
 #define MY_MAXSIZE ((unsigned int)-1)
 

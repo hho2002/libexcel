@@ -19,7 +19,7 @@ endif
 
 INTERNAL_CFLAGS = -Wall -I../include
 CPPFLAGS += -MMD -MP -MT $@
-CFLAGS = -O2 -pipe -m32
+CFLAGS = -O2 -pipe
 
 LIB = libexcel
 STATIC_LIB = libexcel.a
@@ -27,7 +27,7 @@ STATIC_LIB = libexcel.a
 all: $(LIB)
 
 debug: CPPFLAGS =
-debug: CFLAGS = -O0 -g -m32
+debug: CFLAGS = -O0 -g
 debug: $(LIB)
 
 $(LIB): $(STATIC_LIB)
