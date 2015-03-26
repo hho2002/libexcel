@@ -28,7 +28,7 @@ endif
 
 INTERNAL_CFLAGS = -Wall -I../include
 CPPFLAGS += -MMD -MP -MT $@
-CFLAGS= -O2 -pipe
+CFLAGS= -O2 -pipe -m32
 
 EXE1 = example1
 EXE2 = example2
@@ -41,7 +41,7 @@ EXES = $(EXE1) $(EXE2) $(EXE3) $(EXE4) $(EXE5)
 all: $(EXES)
 
 debug: CPPFLAGS =
-debug: CFLAGS = -O0 -g
+debug: CFLAGS = -O0 -g -m32
 debug: $(EXES)
 
 $(EXE1): $(OBJS1) ../src/libexcel.a
